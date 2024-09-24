@@ -1,5 +1,132 @@
+:root {
+  --background-color: #fff;
+  --background-light: #efefef;
+  --shadow-color: #00000033;
+  --primary-color: #ff0056;
+  --text-color: #0a0a0a;
+  --text-light: #575757;
+  --font-size: 16px;
+  --animation-speed: 1;
+}
+
+@function getAnimationDuration($duration: number) {
+  @return calc($duration * var(--animation-speed));
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+}
+
+.navbar {
+  height: 55px;
+  box-shadow: 0 3px 6px var(--shadow-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo {
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: var(--primary-color);
+    text-shadow: 0 1px 3px var(--shadow-color);
+    span {
+      color: var(--text-color);
+    }
+  }
+
+  .nav-links {
+    a {
+      margin-left: 1em;
+      color: var(--text-light);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      &::before {
+        content: "";
+        height: 3px;
+        width: 100%;
+        position: absolute;
+        display: inline-block;
+        background-color: var(--primary-color);
+        bottom: -2px;
+        transform: scaleX(0);
+        transition: transform getAnimationDuration(0.2s) ease-in-out;
+      }
+      &:hover {
+        &::before {
+          transform: scaleX(1);
+        }
+      }
+      &.active {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+    }
+  }
+  .sidebar-btn {
+    height: 26px;
+    width: 32px;
+    cursor: pointer;
+    position: relative;
+    display: none;
+    .bar {
+      height: 5px;
+      width: 100%;
+      border-radius: 4px;
+      background-color: var(--text-color);
+      position: absolute;
+      transition: transform getAnimationDuration(0.5s);
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 50%;
+        transform-origin: right;
+        transform: scaleX(0.8) translateY(-50%);
+      }
+      &:nth-child(3) {
+        bottom: 0;
+        transform-origin: right;
+        transform: scaleX(1.1);
+      }
+    }
+    &.active {
+      .bar {
+        transform-origin: center;
+        top: 50%;
+        &:nth-child(1) {
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          transform: scaleX(0);
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+body {
+  font-size: var(--font-size);
+}
+
+.container {
+  padding-inline: 15vw;
+}
+
+@media screen and (max-width: 768px){
+  .navbar{
+    .nav-links{
+      display: none;
+    }
+    .sidebar-btn{
+      display: block;
+    }
+  }
 }
