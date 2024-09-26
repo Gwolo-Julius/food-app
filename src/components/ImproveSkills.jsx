@@ -11,7 +11,7 @@ const ImproveSkills = () => {
   ];
   return (
     <div className="section hero-section">
-      <div className="col img std-col">
+      <div className="col img">
         <img src="/img/gallery/img_13.jpg" alt="" />
       </div>
 

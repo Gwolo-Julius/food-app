@@ -24,6 +24,7 @@
 
 img {
   object-fit: cover;
+  width: 100%;
 }
 
 .btn {
@@ -50,6 +51,7 @@ img {
   display: flex;
   align-items: center;
   margin-bottom: 3vw;
+  flex-wrap: wrap;
   .title {
     font-size: 2.8em;
     color: var(--text-color);
@@ -69,67 +71,20 @@ img {
 }
 body {
   font-size: var(--font-size);
+  margin-top: 55px;
 }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 200px;
-  background-color: var(--background-color);
-  box-shadow: 0 0 0 10000px #00000043, 3px 0 5px var(--shadow-color);
-  animation: getAnimationDuration(0.3s) slideInLeft;
-  .sidebar-link {
-    display: block;
-    padding: 0.5em 1em;
-    margin-bottom: 1em;
-    color: var(--text-color);
-    font-size: 1.1em;
-    border-left: 0.4em solid transparent;
-    transform: translateX(-100%);
-    animation: getAnimationDuration(0.3s) slideInLeft forwards;
-    @for $i from 1 through 3 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{$i * 0.1}s;
-      }
-    }
-    &.active {
-      border-left: 0.4em solid var(--primary-color);
-    }
-    &:hover {
-      border-left-color: var(--primary-color);
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-    svg {
-      margin-right: 0.5em;
-      width: 1.2em;
-    }
-  }
-}
 .container {
-  padding-inline: 12vw;
+  padding-inline: 19vw;
 }
 
 @import "partials/hero-section";
 @import "partials/improve-section.scss";
 
-.section.quote {
+@import "partials/quote-section";
+
+.section.chief-section {
   display: block;
-  line-height: 1.3;
-  .quote-text {
-    font-size: 1.4em;
-    color: var(--text-color);
-    svg{
-      color: var(--primary-color);
-      font-size: 1.5em;
-      margin-right: .5em;
-    }
-  }
-  .quote-author {
-    color: var(--text-light);
-    text-align: right;margin-top: 1em;
-  }
 }
 .custom-image {
   height: 0;
@@ -143,8 +98,134 @@ body {
     width: 100%;
   }
 }
+
+.top-chiefs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5em;
+  margin-top: 2em;
+}
+.chief-card {
+  display: flex;
+  height: 120px;
+  border-radius: 5px;
+  overflow: hidden;
+  img {
+    height: 100%;
+    width: 120px;
+    border-radius: 5px;
+  }
+  .card-info {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-left: 1.2em;
+    padding-bottom: 0.5em;
+    .chief-card-name {
+      font-weight: bold;
+      font-size: 1.5em;
+      color: var(--text-color);
+    }
+    .chief-count,
+    .chief-cuisine {
+      color: var(--text-light);
+    }
+
+    .chief-icons {
+      font-size: 1.2em;
+      svg {
+        margin-right: 0.5em;
+        &:nth-child(1) {
+          color: #0063f7;
+        }
+        &:nth-child(2) {
+          color: #13b4ff;
+        }
+        &:nth-child(3) {
+          color: #ff0056;
+        }
+      }
+    }
+  }
+}
+
+.hero-section{
+  display: flex;
+}
+
+.hero-section.img{
+  width: 100%;
+}
+
+
+.footer {
+  background-color: #0f0f0f;
+  color: #fff;
+  padding-block: 3em;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1em;
+  .footer-section {
+    p {
+      margin-bottom: 0.5em;
+      opacity: 0.7;
+    }
+    p.title {
+      opacity: 1;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+ 
 @import "partials/animations.scss";
+
+@media screen and (max-width: 1280px) {
+  .container {
+    padding-inline: 16vw;
+  }
+  .section {
+  display: flex;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .container {
+    padding-inline: 12vw;
+  }
+}
 @media screen and (max-width: 768px) {
+  .container {
+    padding-inline: 6vw;
+  }
+
+  .section {
+    .col {
+      width: 100%;
+      padding: 0 !important;
+      text-align: center;
+      margin-bottom: 2em;
+    }
+  }
+  .skill-item {
+    display: inline-block;
+    margin: 0.75em;
+  }
+
+  .section.improve-skills .btn {
+    display: block;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .section.hero-section {
+    display: flex;
+    // flex-direction: column;
+    img{
+      width: 100%;
+    }
+  }
   .navbar {
     .nav-links {
       display: none;
@@ -152,5 +233,24 @@ body {
     .sidebar-btn {
       display: block;
     }
+  }
+  .chief-card {
+    box-shadow: 0 5px 6px var(--shadow-color);
+  }
+  .footer {
+    grid-template-columns: repeat(4, 1fr);
+    .footer-section:nth-child(1) {
+      grid-column: span 4;
+    }
+    .footer-section:nth-child(2),
+    .footer-section:nth-child(3) {
+      grid-column: span 2;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding-inline: 4vw;
   }
 }
