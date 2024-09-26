@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
-import {faHome,faList, faCog} from '@fortawesome/free-solid-svg-icons'
+import { faHome, faList, faCog } from "@fortawesome/free-solid-svg-icons";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [showSidebar, setShowSiderbar] = useState(false);
@@ -8,23 +9,24 @@ const Navbar = () => {
     {
       name: "Home",
       path: "/",
-      icon: faHome
+      icon: faHome,
     },
     {
       name: "Recipes",
       path: "/recipes",
-      icon: faList
+      icon: faList,
     },
     {
       name: "Settings",
       path: "/settings",
-      icon: faCog
+      icon: faCog,
     },
   ];
 
-  const closeSidebar = ()=>{
-    setShowSiderbar(false)
-  }
+  const closeSidebar = () => {
+    setShowSiderbar(false);
+  };
+  const location = useLocation();
   return (
     <>
       <div className="navbar container">
@@ -33,9 +35,13 @@ const Navbar = () => {
         </a>
         <div className="nav-links">
           {links.map((link) => (
-            <a href="#!" key={link.name}>
+            <Link
+              className={location.pathname === link.path ? "active" : ""}
+              to={link.path}
+              key={link.name}
+            >
               {link.name}
-            </a>
+            </Link>
           ))}
           {/* <a href="#!">Home</a>
           <a href="#!">Recipes</a>
@@ -50,7 +56,7 @@ const Navbar = () => {
           <div className="bar"></div>
         </div>
       </div>
-      {showSidebar &&  <Sidebar close={closeSidebar} links={links} />}
+      {showSidebar && <Sidebar close={closeSidebar} links={links} />}
     </>
   );
 };
