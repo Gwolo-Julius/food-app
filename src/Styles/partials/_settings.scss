@@ -1,0 +1,47 @@
+.section {
+  &.d-block {
+    display: block;
+  }
+  .options-container {
+    box-shadow: 0 5px 10px var(--shadow-color);
+    padding: 1em;
+    border-radius: 5px;
+    border-left: 0.5em solid var(--primary-color);
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
+    .option {
+      height: 3.5em;
+      width: 3.5em;
+      box-shadow: 0 3px 6px var(--shadow-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 7px;
+      &.light {
+        background-color: var(--white);
+      }
+      &.dark {
+        background-color: #1d1d1d;
+      }
+      .check {
+        height: 2.5em;
+        width: 2.5em;
+        background-color: var(--primary-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px var(--shadow-color);
+        font-weight: 900;
+        svg{
+          height: 1.5em;
+          width: 1.5em;
+        }
+      }
+    }
+  }
+  .d-block h2 {
+    font-size: 1.75em;
+  }
+}
