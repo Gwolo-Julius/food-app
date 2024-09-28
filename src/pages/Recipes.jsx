@@ -1,23 +1,23 @@
 import React from "react";
 
+import PreviousSearch from "../components/PreviousSearch";
+import RecipesCard from "../components/RecipesCard";
+
 const Recipes = () => {
-  const searches = [
-    "Cookies",
-    "ice cream",
-    "burger",
-    "lasagna",
-    "salad",
-    "juice",
-    "biriyani",
-    "Pizza",
-    "pudding",
-    "soup",
-  ];
+ 
   return (
-    <div className="previour-search">
-      <h2>Previours Searches</h2>
-      <div className="previour-search-container">{searches.map(search=>(<div>{search}</div>))}</div>
-      <h1>I'm Recipes page</h1>
+    <div>
+      <PreviousSearch />
+      <div className="recipes-container">
+        <RecipesCard/>
+        <RecipesCard/>
+        <RecipesCard/>
+        <RecipesCard/>
+        <RecipesCard/>
+        <RecipesCard/>
+        <RecipesCard/>
+        <RecipesCard/>
+      </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@
   --primary-color: #ff0056;
   --primary-color-header: #ffd6e3;
   --text-color: #0a0a0a;
+  --white: #fff;
   --text-light: #575757;
   --font-size: 16px;
   --animation-speed: 1;
@@ -82,6 +83,8 @@ body {
 @import "partials/improve-section.scss";
 
 @import "partials/quote-section";
+@import "partials/recipes";
+@import "partials/recipes-card";
 
 .section.chief-section {
   display: block;
@@ -150,14 +153,13 @@ body {
   }
 }
 
-.hero-section{
+.hero-section {
   display: flex;
 }
 
-.hero-section.img{
+.hero-section.img {
   width: 100%;
 }
-
 
 .footer {
   background-color: #0f0f0f;
@@ -180,7 +182,6 @@ body {
   }
 }
 
- 
 @import "partials/animations.scss";
 
 @media screen and (max-width: 1280px) {
@@ -188,7 +189,7 @@ body {
     padding-inline: 16vw;
   }
   .section {
-  display: flex;
+    display: flex;
   }
 }
 @media screen and (max-width: 1050px) {
@@ -222,7 +223,7 @@ body {
   .section.hero-section {
     display: flex;
     // flex-direction: column;
-    img{
+    img {
       width: 100%;
     }
   }
@@ -246,6 +247,9 @@ body {
     .footer-section:nth-child(3) {
       grid-column: span 2;
     }
+  }
+  .search-box {
+    width: 100%;
   }
 }
 
