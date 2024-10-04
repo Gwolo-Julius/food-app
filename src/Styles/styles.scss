@@ -28,6 +28,9 @@ img {
   width: 100%;
 }
 
+body {
+  background-color: var(--background-light);
+}
 .btn {
   border: none;
   outline: none;
@@ -251,6 +254,7 @@ body {
   }
   .search-box {
     width: 100%;
+    background-color: #fff;
   }
 }
 
